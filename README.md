@@ -36,26 +36,6 @@ This same information is also available in the **"Electron Transfer - Process De
 Modelling the Electron Transfer in E.Coli Using Kappa 
 =============
 
-Introduction: 
---------
-
-Part of EdiGEM's project is to implement the MtrCAB electron transfer system from Shewanella oneidensis in E. coli. 
-
-We model the electron transfer system in E.coli by using the stochastic, agent-based language Kappa and its implementation KaSim 3.0. The whole process is divided into sub-processes which we try to model separately at first and combine at the end. The sub-processes can roughly be described in the following way: 
-
-**Sub-process: Corresponding Kappa File:**
-
-1. Glucose -> TCA cycle -> Quinol 1_TCA.ka 
-
-2. Quinol -> NapC 2_NapC.ka 
-
-3. NapC -> MtrA-> MtrB or Fe soluble 3_MtrABC.ka 
-
-4. MtrC -> Flavins -> Fe insoluble 4_UFe.ka 
-
-5. Combines 3. and 4. 5.ka 
-
-
 1_TCA.ka:
 --
 Glucose -> TCA cycle -> QH2 
