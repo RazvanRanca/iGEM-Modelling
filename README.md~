@@ -1,4 +1,4 @@
-**The below deals with the *how* of the modelling, for the *why* please see our analysis page on the main iGem wiki: http://2012.igem.org/Team:Edinburgh/Modelling/Kappa/Analysis **
+**The below deals with the *how* of the modelling, for the *why* please see our analysis page on the main iGem wiki: http://2012.igem.org/Team:Edinburgh/Modelling/Kappa/Analysis**
 
 Overview of modelling
 ------------
