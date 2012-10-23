@@ -1,43 +1,6 @@
-EdiGEM12
-========
+**The below deals with the *how* of the modelling, for the *why* please see our analysis page on the main iGem wiki: http://2012.igem.org/Team:Edinburgh/Modelling/Kappa/Analysis **
 
-Introduction
-------------
-EdiGEM12 is the team from Edinburgh University taking part in the synthetic biology competition iGEM 2012. Part of EdiGEM's project is to implement the MtrCAB electron transfer system from *Shewanella* oneidensis in *E. coli*.
-
-We model the electron transfer system in *E.coli* by using the stochastic, agent-based language Kappa and its implementation KaSim 3.0 (*). The whole process is divided into sub-processes which we try to model separately at first and combine at the end. The sub-processes can roughly be described in the following way:
-
-1_TCA.ka
-// Glucose -> TCA cycle -> Quinol
-
-2_NapC.ka
-// Quinol -> NapC 
-
-3_MtrABC.ka
-// NapC -> MtrA-> MtrB or Fe soluble
-
-4_UFe.ka
-// MtrC -> Flavins -> Fe insoluble
-
-5.ka
-// Combines 3. and 4.
-
-The file "Electron Transfer - Process Description.pdf" contains a detailed description of the used information and assumptions in the modelling.
-
-
-(*) More about Kappa and rule-based modelling can be found at http://kappalanguage.org/.
-
-------------
-
-Following is a detailed description of the modelling process, including justifications for the ammounts of agents and the rates we used.
-This same information is also available in the "Electron Transfer - Process Description.pdf" file included in the repository
-
-- - -
-
-EdiGEM12
-========
-
-Introduction
+Overview of modelling
 ------------
 EdiGEM12 is the team from Edinburgh University taking part in the synthetic biology competition iGEM 2012. Part of EdiGEM's project is to implement the MtrCAB electron transfer system from *Shewanella* oneidensis in *E. coli*.
 
@@ -67,7 +30,7 @@ The file "Electron Transfer - Process Description.pdf" contains a detailed descr
 
 
 Following is a detailed description of the modelling process, including justifications for the ammounts of agents and the rates we used.
-This same information is also available in the "Electron Transfer - Process Description.pdf" file included in the repository
+This same information is also available in the **"Electron Transfer - Process Description.pdf"** file included in the repository
 
 
 Modelling the Electron Transfer in E.Coli Using Kappa 
@@ -356,9 +319,6 @@ This model is just a concatenation of models 4 and 5. Therefore many of the rule
 %agent: InsolubleIronMtrCounter() 
 
 %agent: InsolubleIronFlavinCounter() 
-
-
- 
 
 %agent: mtrBC(domB, domC1, domC2, domC3, carry~0~1~2~…~8~9~10) 
 
