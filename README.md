@@ -52,10 +52,7 @@ Glucose -> TCA cycle -> QH2
 
  
 
-There is a linear relation between the amount of glucose and the amount of Acyl-CoA in the cell except when the amount of glucose is less than 0.5 mM or more than 5.5 mM. Acyl-CoA has a default 
-minimal amount of 0.14mM and cannot go over 0.4mM. (Yoshichika Takamura, 1988) Since Acyl-CoA is mainly used in the TCA cycle, we assume linear relation between the amount of glucose and the 
-number of ‘running’ TCA cycles. We estimate the amount of running TCA cycle by dividing the amount of Acyl-CoA in the cell (each TCA cycle needs two molecules of Acyl-CoA per molecule of 
-glucose). The above relation between the glucose and the number of TCA cycles is expressed as perturbation rules in the kappa file. 
+There is a linear relation between the amount of glucose and the amount of Acyl-CoA in the cell except when the amount of glucose is less than 0.5 mM or more than 5.5 mM. Acyl-CoA has a default minimal amount of 0.14mM and cannot go over 0.4mM. (Yoshichika Takamura, 1988) Since Acyl-CoA is mainly used in the TCA cycle, we assume linear relation between the amount of glucose and the number of ‘running’ TCA cycles. We estimate the amount of running TCA cycle by dividing the amount of Acyl-CoA in the cell (each TCA cycle needs two molecules of Acyl-CoA per molecule of glucose). The above relation between the glucose and the number of TCA cycles is expressed as perturbation rules in the kappa file. 
 
 The token Quinol refers to coenzyme Q10 (aka ubiquinone). 
 
@@ -75,13 +72,11 @@ The token Quinol refers to coenzyme Q10 (aka ubiquinone).
 
 The products from the TCA cycle per molecule of glucose are 6xNADH and 2xFADH (Citric acid cycle: Products, 2012). The main unit used in the model is μM. Thus, we do not get ‘huge numbers’ for the amount of tokens, such as Glucose, or values less than one for the number of agents, such as the TCA(). 
 
-NADH binds to Complex I via FMN which takes the electrons from NADH. The electrons are then passed to a series of iron-sulphur clusters which we ignore in the model. The electrons leave 
-Complex I and are taken by the ubiquinone. (Oxidative phosphorylation: NADH-coenzyme Q oxidoreductase (complex I), 2012) 
+NADH binds to Complex I via FMN which takes the electrons from NADH. The electrons are then passed to a series of iron-sulphur clusters which we ignore in the model. The electrons leave Complex I and are taken by the ubiquinone. (Oxidative phosphorylation: NADH-coenzyme Q oxidoreductase (complex I), 2012) 
 
 Succinate in the TCA cycle 'binds' to FAD in Complex II. Then Complex II reduces the quinol. (Oxidative phosphorylation: Succinate-Q oxidoreductase (complex II), 2012) 
 
-In order to determine the rates of electron transfer between different agents in this kappa sub-model, we use the following oxidation-reduction potentials: http://hyperphysics.phy-
-astr.gsu.edu/hbase/chemical/redoxp.html 
+In order to determine the rates of electron transfer between different agents in this kappa sub-model, we use the following oxidation-reduction potentials: http://hyperphysics.phy-astr.gsu.edu/hbase/chemical/redoxp.html 
 
 Here are the oxidation-reduction potentials that are of interest to us: 
 
@@ -99,14 +94,13 @@ There is still little information on the electron transfer system in E.Coli invo
 
 'Complex I in' is the rate at which NADH gives electrons to Complex 1. We assume 'Complex I in' is equal to 1E-5. 'Complex I out' is the rate at which Ubiquinone takes electrons from Complex I. Given the table above we make 'Complex I out' equal (0.045/0.32)*'Complex I in'. 
 
-Similarly, 'Complex II in' = (0.670/0.320)*'Complex I in' and 'Complex II out' = (0.031/0.320)*'Complex 
-I in' 
+Similarly, 'Complex II in' = (0.670/0.320)*'Complex I in' and 'Complex II out' = (0.031/0.320)*'Complex I in' 
 
 **Perturbation Rules** 
 
 The perturbation rules used in this file are used to keep the amounts of glucose, NADH and succinate from going below zero. They also update the number of TCA() agents depending on the amount of glucose. 
 
-
+
 2_NapC.ka 
 --
 Quinol -> NapC 
@@ -131,8 +125,7 @@ We model the agent NapC so that it carries 0, 2 or 4 electrons. We assume that t
 
  “Redox potentiometric analysis indicated that the haems had low midpoint redox potentials (Em,8,0) of -56 mV, -181 mV, -207 mV and -235 mV.” (Michael L. CARTRON, 2002) 
 
-From the above citation, we assume that the ‘redox’ potentials of the two haem tuples of NapC are -118.5 mV (the average of -56 mV and -181 mV) and -221mV(the average of -207 mV and -235 mV), 
-respectively. We also assume that the rate of the rule 'NapC(carry~0) absorbs Quinol' is the -221mV one, because the tuple with higher redox potential will most likely be ‘filled’ with electrons first. 
+From the above citation, we assume that the ‘redox’ potentials of the two haem tuples of NapC are -118.5 mV (the average of -56 mV and -181 mV) and -221mV(the average of -207 mV and -235 mV), respectively. We also assume that the rate of the rule 'NapC(carry~0) absorbs Quinol' is the -221mV one, because the tuple with higher redox potential will most likely be ‘filled’ with electrons first. 
 
 Assuming, again, that the relations between the different rates in the model are the same as the corresponding relations between the oxidation-reduction potentials above, we fix the following rate for the given rules: 
 
@@ -166,7 +159,7 @@ MtrA -> MtrB
 
  
 
-
+
 mtrB is the end point of this model and accepts electrons from MtrA through a single connection site. 
 
 (Katrin Richter, 2012) shows that MtrC stays attached to MtrB. (Heather M. Jensen, Engineering of a synthetic electron conduit in living cells., 2010) shows that there are 75 MtrC so there are 75 MtrBs as well. 
@@ -201,10 +194,7 @@ mtrA can connect through a single heme to either NapC, where it accepts electron
 
 (Heather M. Jensen, Engineering of a synthetic electron conduit in living cells., 2010) suggests that transfer between NapC and mtrA is the limiting factor in the soluble Iron oxidation rate. Additionally, we are given a change of oxidation rate dependent on the number of mtrAs. Modelling to fit this curve gives us the on and off rates between NapC and mtrA. 
 
-(Jones ME, Apr 2010) shows that in Shewanella soluble oxidation is up to 20 times bigger than insoluble one. (Heather M. Jensen, Engineering of a synthetic electron conduit in living cells., 2010) claims that soluble oxidation in ecoli is ~30 times slower than Shewanella and 
-
-
-insoluble is ~10 times slower. Therefore in ecoli the soluble rate should be about 7 times higher than the insoluble one. This fact is used to empirically determine the reaction rates. 
+(Jones ME, Apr 2010) shows that in Shewanella soluble oxidation is up to 20 times bigger than insoluble one. (Heather M. Jensen, Engineering of a synthetic electron conduit in living cells., 2010) claims that soluble oxidation in ecoli is ~30 times slower than Shewanella and insoluble is ~10 times slower. Therefore in ecoli the soluble rate should be about 7 times higher than the insoluble one. This fact is used to empirically determine the reaction rates. 
 
 4_UFe.ka 
 ---
@@ -256,13 +246,11 @@ InsolubleIron also has 1 connection point and can accept electrons either from F
 
 The heme structure of mtrC is detailed in (Thomas A. Clarke, 2011). This shows that one of mtrC’s hemes connects to insoluble iron and the others to flavins. The hemes work independently of one another. Both the Flavins and the Iron particles accept electrons from MtrC. Flavin then independently connect to InsolubleIron and pass on the electrons taken from MtrC. 
 
-
 The relative rates at which the reactions occur can be determined from some experimental results. (Heather M. Jensen, Engineering of a synthetic electron conduit in living cells., 2010) shows that when the amount of iron particles is increased by several orders of magnitude, the rate of electron transfer increases only by 2.5 
 
 However, (Daniel Baron, 2009) shows that addition of Flavin can increase the rate significantly more than that, therefore the amount of electrons reaching mtrC is not the bottleneck. By replicating this result we we’re able to empirically set the on and off rates between mtrC and InsolubleIron. 
 
-Furthermore, (Daniel Baron, 2009) also shows that the effect of adding Flavins isn’t linear either. Here the bottleneck is likely the small amount of hemes where the Flavins can connect to accept electrons. Replicating the expected behaviour we are also able to determine the on and off rates between Flavin and the other agents. Our result is also corroborated by which predicts that decoupling between flavins and mtrC will be 
-significantly faster than between InsolubleIron and mtrC. 
+Furthermore, (Daniel Baron, 2009) also shows that the effect of adding Flavins isn’t linear either. Here the bottleneck is likely the small amount of hemes where the Flavins can connect to accept electrons. Replicating the expected behaviour we are also able to determine the on and off rates between Flavin and the other agents. Our result is also corroborated by which predicts that decoupling between flavins and mtrC will be significantly faster than between InsolubleIron and mtrC. 
 
 **Verifications:** 
 
@@ -364,10 +352,7 @@ The relative rates are kept in the same proportions, they are just multiplied by
 
 **Verifications:** 
 
-As expected from (Jones ME, Apr 2010) and (Heather M. Jensen, Engineering of a synthetic electron conduit in living cells., 2010), increasing the amount of NapC makes the behaviour 
-
-
-of the system more similar to that of Shewanella and the ratio between soluble and insoluble oxidation rates increases from ~9 to ~20 
+As expected from (Jones ME, Apr 2010) and (Heather M. Jensen, Engineering of a synthetic electron conduit in living cells., 2010), increasing the amount of NapC makes the behaviour of the system more similar to that of Shewanella and the ratio between soluble and insoluble oxidation rates increases from ~9 to ~20 
 
 Increasing the amount of Flavins by 2 orders of magnitude only increases the oxidation rate by 4-5 times. This is the same behaviour observed in (Dan Coursolle, 2010). 
 
