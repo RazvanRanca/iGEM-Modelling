@@ -1,4 +1,5 @@
-**The bellow deals with the *how* of the modelling, for the results please see our analysis page on the main iGem wiki: http://2012.igem.org/Team:Edinburgh/Modelling/Kappa/Analysis and http://2012.igem.org/Team:Edinburgh/Modelling/Kappa/Analysis-All**
+**The bellow deals with the *how* of the modelling, for the results please see our analysis page on the main iGem wiki: http://2012.igem.org/Team:Edinburgh/Modelling/Kappa/Analysis and 
+http://2012.igem.org/Team:Edinburgh/Modelling/Kappa/Analysis-All**
 
 Overview of modelling
 ------------
